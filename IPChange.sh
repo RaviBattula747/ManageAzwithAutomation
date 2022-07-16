@@ -31,3 +31,7 @@ else
 echo "execution failed for ${array[$i,0]}"
 fi
 done
+
+--Description
+* I had an requirment in past where I need to ensure the migrated VM in azure should get some predefined IP Address. So I have developed this code. This code might get
+"ip not free" message when all the VM's are of same subnet hence I would recoomend to execute the code with some higher IP Address like "*.*.*.200+" and then with the actual IP.
