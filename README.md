@@ -4,4 +4,5 @@ For any problems there must be numerous solution to fix and those can be categor
 Decide to help everyone with CLI scripts that automate most of the manual tasks that a fresher/Experienced in IT would get. 
 
 Follow
-Youtube : https://www.youtube.com/channel/UCAafW5_PrEp4A1tray-1X6w
+Youtube : https://bit.ly/3aMHwla
+
