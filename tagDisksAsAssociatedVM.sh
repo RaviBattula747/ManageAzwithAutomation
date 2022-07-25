@@ -1,5 +1,3 @@
-#az vm show --name CLWPDYNSQLRPT01 --subscription NANTMEDIA-PRD—01 --resource-group rg-app-non-pci-windows-prd-01 --query storageProfile.dataDisks[*].name
-#/subscriptions/b3f964c7-1d16-4c8d-8240-dd1b6a30a429/resourceGroups/rg-dr-infra-vm-prd-windows-ad-ss-01/providers/Microsoft.Compute/virtualMachines/azeussdc01
 
 declare -A Laks
 Laks[f63fa6ca-967f-4ff6-8e38-554feccee894]="NANTMEDIA-NP—01"
@@ -11,7 +9,7 @@ Laks[1bffd3a8-c19d-4216-be31-6461c03d2180]="NANTMEDIA-VDI-01"
 input="/home/ravi_battula/file143l.txt"
 input1="/home/ravi_battula/datadisks.txt"
 input2="/home/ravi_battula/osdisks.txt"
-key="Application"
+key="Application Name"
 
 while read -r lines
 do
@@ -39,3 +37,9 @@ do
 
 done < "$input"
 
+Description
+inout should be provided as a file, here file143l.txt.
+this file inputs need to be in <Tag value>,ResourceIDofVM
+
+then associated DataDisks and Os disks will be automatically Identified by the code and the Tag will be applied.
+ Here I have given the Tag key as "Application Name" you can cchange it based on your requirement.
