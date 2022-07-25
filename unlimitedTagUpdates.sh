@@ -28,3 +28,7 @@ do
  
   az tag update --subscription ${Lak[$shmi]} --resource-id "$rl" --operation merge --tags "$key"="$value" --query "id" | rev | cut -d/ -f5 | rev
 done < "$input"
+
+Description
+input should be provided as a file, here file143.txt.
+this file inputs need to be in <Tag value>,ResourceID, Here I have given the Tag key as "Application Name" you can change it based on your requirement.
