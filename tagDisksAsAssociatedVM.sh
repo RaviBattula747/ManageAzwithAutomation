@@ -38,8 +38,8 @@ do
 done < "$input"
 
 Description
-inout should be provided as a file, here file143l.txt.
+input should be provided as a file, here file143l.txt.
 this file inputs need to be in <Tag value>,ResourceIDofVM
 
 then associated DataDisks and Os disks will be automatically Identified by the code and the Tag will be applied.
- Here I have given the Tag key as "Application Name" you can cchange it based on your requirement.
+ Here I have given the Tag key as "Application Name" you can change it based on your requirement.
