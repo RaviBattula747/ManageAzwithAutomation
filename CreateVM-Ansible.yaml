@@ -1,0 +1,57 @@
+#ansible-playbook CreateVM-Ansible.yaml --tags tagged   -- to create NIC and VM
+#ansible-playbook CreateVM-Ansible.yaml --tags untagged -- to delete NIC and VM
+#
+
+---
+- hosts: localhost
+  connection: local
+  tasks:
+  - name: NIC Create
+    azure_rm_networkinterface:
+        name: temporary
+        subscription_id: be1aa29f-f567-4dde-9368-ac327f108677
+        resource_group: rg-IT-Systems-Spoke02-Test-nw-eastus1-01
+        virtual_network: vnet-IT-Systems-Spoke02-Test-eastus1-01
+        subnet_name: snet-IT-Systems-Spoke02-Test-webpublic-eastus1-01
+        ip_configurations:
+         - name: ipconfig1
+           primary: true
+  - name: Create VM
+    tags: createVM
+    azure_rm_virtualmachine:
+      resource_group: rg-IT-Systems-Spoke02-Test-nw-eastus1-01
+      name: win-vm
+      subscription_id: be1aa29f-f567-4dde-9368-ac327f108677
+      location: eastus
+      vm_size: Standard_F1
+      admin_username: azureuser
+      admin_password: User@123456789
+      network_interfaces: temporary
+      os_type: Windows
+      managed_disk_type: Standard_LRS
+      image:
+          offer: WindowsServer
+          publisher: MicrosoftWindowsServer
+          sku: 2019-Datacenter
+          version: latest
+  - name: cleanupn
+    tags: cleanupn
+    azure_rm_networkinterface:
+         name: temporary
+         resource_group: rg-IT-Systems-Spoke02-Test-nw-eastus1-01
+         subscription_id: be1aa29f-f567-4dde-9368-ac327f108677
+         state: absent
+  - name: cleanupv
+    tags: cleanupv
+    azure_rm_virtualmachine:
+         resource_group: rg-IT-Systems-Spoke02-Test-nw-eastus1-01
+         subscription_id: be1aa29f-f567-4dde-9368-ac327f108677
+         name: win-vm
+         state: absent
+  - name: cleanupd
+    tags: cleanupd
+    azure_rm_manageddisk:
+         name: win-vm
+         resource_group: rg-IT-Systems-Spoke02-Test-nw-eastus1-01
+         subscription_id: be1aa29f-f567-4dde-9368-ac327f108677         
+         state: absent
