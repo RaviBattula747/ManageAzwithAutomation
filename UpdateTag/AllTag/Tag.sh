@@ -1,6 +1,6 @@
 #!/bin/bash
 declare -A Lak
-input="/home/ravi_battula/file143.txt"
+input="/home/ravi/ManageAzwithAutomation/UpdateTag/AllTag/inputFile.txt"
 
 #Lak[subscription_id]=subscription Name.
 
@@ -26,4 +26,5 @@ done < "$input"
 
 Description
 input should be provided as a file, here file143.txt.
-this file inputs need to be in <Tag value>,ResourceID, Here I have given the Tag key as "Application Name" you can change it based on your requirement.
+inputFile file need to have data in the form <Tag value>,ResourceIDofVM. which can be obtained 
+from concating cells in exported excel from Azure with columns resourceID. Here I have given the Tag key as "Application Name" you can change it based on your requirement.
